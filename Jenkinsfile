@@ -63,14 +63,7 @@ pipeline {
 
                     post {
                         always {
-                            publishHTML(target: [
-                                reportDir: 'playwright-report',
-                                reportFiles: 'index.html',
-                                reportName: 'Playwright E2E Report',
-                                allowMissing: false,
-                                alwaysLinkToLastBuild: false,
-                                keepAll: false
-                            ])
+                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Playwright HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                         }
                     }
                 }
@@ -87,7 +80,7 @@ pipeline {
 
             steps {
                 sh '''
-                    npm install netlify-cli
+                    npm install netlify-cli@20.1.1
                     node_modules/.bin/netlify --version
                 '''
             }

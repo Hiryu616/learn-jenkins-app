@@ -34,7 +34,8 @@ pipeline {
 
                     steps {
                         sh '''
-                            #test -f build/index.html
+                            export JEST_JUNIT_OUTPUT_DIR="jest-results"
+                            export JEST_JUNIT_OUTPUT_NAME="junit.xml"
                             npm test
                         '''
                     }
